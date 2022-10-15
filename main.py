@@ -27,6 +27,5 @@ class Board:
         print('',Board.positions[0],'|',Board.positions[1],'|',Board.positions[2],'')
         print("\n")
 
-game = Game()
-
-
+if __name__=="__main__":
+    game = Game()
