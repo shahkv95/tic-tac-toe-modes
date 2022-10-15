@@ -17,7 +17,9 @@ class Game:
         Board.symbol = choice(['X', '0'])
         # print(Board.symbol)
 
-        Game.player_wins = True
+        Game.player_chance()
+
+        # Game.player_wins = True
         if(Game.player_wins):
             # needs to be updated
             print("Player", Board.symbol, "wins!")
@@ -28,6 +30,25 @@ class Game:
         if(start_another_game == "1"):
             Game()
 
+    def player_chance():
+        Game.player_wins = True # default should be set to False
+        # loop repeats until someone wins or runs out of steps
+        while(not Game.player_wins):
+            Game.player_move()
+            Game.check_player_win()
+            Game.swap_symbol()
+
+    def player_move():
+        pass
+
+    def check_player_win():
+        pass
+
+    def swap_symbol():
+        if(Board.symbol == 'X'):
+            Board.symbol = '0'
+        else:
+            Board.symbol = 'X'
 
 class Board:
     def __init__(self):
