@@ -1,3 +1,5 @@
+from random import choice
+
 class Game:
     def __init__(self):
         print("\nTic Tac Toe\n")
@@ -5,11 +7,27 @@ class Game:
         print("Press any key(s): To quit\n")
 
         Game.user_choice = input("Do you want to start the game? ")
+
         if(Game.user_choice == "1"):
             Game.mode = "Multiplayer"
         else:
             return
+
         Board()
+        Board.symbol = choice(['X', '0'])
+        # print(Board.symbol)
+
+        Game.player_wins = True
+        if(Game.player_wins):
+            # needs to be updated
+            print("Player", Board.symbol, "wins!")
+        else:
+            print("No one wins! It's a draw!")
+
+        start_another_game = input("Press 1: To start another game? ")
+        if(start_another_game == "1"):
+            Game()
+
 
 class Board:
     def __init__(self):
