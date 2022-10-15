@@ -1,10 +1,20 @@
+class Game:
+    pass
+
 class Board:
-    def display_board(self): #Laptop number keypad 
-        print('',7,'|',8,'|',9,'')
+    def __init__(self):
+        Board.positions = ['1','2','3',
+                        '4','5','6',
+                        '7','8','9']
+        Board.display_board()
+
+    def display_board(): #Laptop number keypad
+        print('',Board.positions[6],'|',Board.positions[7],'|',Board.positions[8],'')
         print('---|---|---')
-        print('',4,'|',5,'|',6,'')
+        print('',Board.positions[3],'|',Board.positions[4],'|',Board.positions[5],'')
         print('---|---|---')
-        print('',1,'|',2,'|',3,'')
+        print('',Board.positions[0],'|',Board.positions[1],'|',Board.positions[2],'')
         print()
 board = Board()
-board.display_board()
+
+
