@@ -33,10 +33,12 @@ class Game:
     def player_chance():
         Game.player_wins = False
         # loop repeats until someone wins or runs out of steps
-        while(not Game.player_wins):
+        i = 0
+        while((not Game.player_wins) and (i < 9)):
             Game.get_player_move()
             Game.check_player_win()
             Game.swap_symbols()
+            i += 1
 
     def get_player_move():
         Game.check_valid_positions()
