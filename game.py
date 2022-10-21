@@ -2,31 +2,27 @@ from random import choice
 from board import Board
 
 class Game:
-    def __init__(self):
-        print("\nTic Tac Toe [3x3]\n")
-        print("Press 1: To start the game")
-        print("Press any key(s): To quit\n")
+    def __init__(self, user_choice):
+        self.user_choice = user_choice
 
-        Game.user_choice = input("Do you want to start the game? ")
+    def play_game(self):
 
-        if(Game.user_choice != "1"):
+        if(self.user_choice != "1"):
             return
-
+        
         Board()
+
         Game.symbol = choice(['X', '0'])
-        print("Starting with", Game.symbol, "turn")
-        # print(Game.symbol)
+        print("Starting with", Game.symbol, "turn\n")
 
         Game.player_chance()
 
-        # Game.player_wins = True
         if(Game.player_wins):
-            # needs to be updated
             print("Player", Game.winner_symbol, "wins!")
         else:
             print("No one wins! It's a draw!")
 
-        start_another_game = input("Press 1: To start another game; any other key to quit")
+        start_another_game = input("Press 1: To start another game; any other key to quit ")
         if(start_another_game == "1"):
             Game()
 
