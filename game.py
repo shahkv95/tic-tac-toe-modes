@@ -7,7 +7,11 @@ class Game:
 
     def play_game(self):
 
-        if(self.user_choice != "1"):
+        if(self.user_choice == "1"):
+            Game.mode = "multiplayer"
+        elif(self.user_choice == "2"):
+            Game.mode = "bot"
+        else:
             return
         
         Board()
@@ -31,10 +35,17 @@ class Game:
         # loop repeats until someone wins or runs out of steps
         i = 0
         while((not Game.player_wins) and (i < 9)):
-            Game.get_player_move()
-            Game.check_player_win()
-            Game.swap_symbols()
-            i += 1
+            if(Game.mode == "multiplayer"):
+                Game.get_player_move()
+                Game.check_player_win()
+                Game.swap_symbols()
+                i += 1
+            else:
+                # code to be updated for bot as a player
+                Game.get_player_move()
+                Game.check_player_win()
+                Game.swap_symbols()
+                i += 1
 
     def get_player_move():
         Game.add_valid_positions()
@@ -52,7 +63,7 @@ class Game:
                 (Board.positions[1]== Game.symbol) and (Board.positions[4] == Game.symbol) and (Board.positions[7] == Game.symbol)) or (
                 (Board.positions[2]== Game.symbol) and (Board.positions[5] == Game.symbol) and (Board.positions[8] == Game.symbol)) or (
 
-                # diagoal wise conditions -> total 2 possibilities
+                # diagonal wise conditions -> total 2 possibilities
                 (Board.positions[0]== Game.symbol) and (Board.positions[4] == Game.symbol) and (Board.positions[8] == Game.symbol)) or (
                 (Board.positions[2]== Game.symbol) and (Board.positions[4] == Game.symbol) and (Board.positions[6] == Game.symbol)):
             Game.winner_symbol = Game.symbol
