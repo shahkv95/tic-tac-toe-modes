@@ -8,13 +8,12 @@ class Game:
 
         Game.user_choice = input("Do you want to start the game? ")
 
-        if(Game.user_choice == "1"):
-            Game.mode = "Multiplayer"
-        else:
+        if(Game.user_choice != "1"):
             return
 
         Board()
         Game.symbol = choice(['X', '0'])
+        print("Starting with", Game.symbol, "turn")
         # print(Game.symbol)
 
         Game.player_chance()
@@ -26,7 +25,7 @@ class Game:
         else:
             print("No one wins! It's a draw!")
 
-        start_another_game = input("Press 1: To start another game? ")
+        start_another_game = input("Press 1: To start another game; any other key to quit")
         if(start_another_game == "1"):
             Game()
 
@@ -41,7 +40,7 @@ class Game:
             i += 1
 
     def get_player_move():
-        Game.check_valid_positions()
+        Game.add_valid_positions()
         Board.display_board()
 
     def check_player_win():
@@ -70,7 +69,7 @@ class Game:
         else:
             Game.symbol = 'X'
 
-    def check_valid_positions():
+    def add_valid_positions():
         isValid = False
         while(not isValid):
             player_turn = input("Enter the position number: ")
@@ -101,6 +100,7 @@ class Board:
         Board.positions = ['1','2','3',
                            '4','5','6',
                            '7','8','9']
+
         Board.display_board()
 
     def display_board(): #Laptop number keypad
